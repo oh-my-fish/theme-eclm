@@ -15,7 +15,7 @@ function fish_prompt
   set -l blue (set_color -o blue)
   set -l green (set_color -o green)
   set -l normal (set_color normal)
-  
+
   if test $last_status = 0
       set arrow "$green➜ "
   else
@@ -27,7 +27,7 @@ function fish_prompt
 
     if test (_git_branch_name) = 'master'
       set -l git_branch (_git_branch_name)
-      set git_info "$blue ($yellow$git_branch$blue)"
+      set git_info "$blue ($red$git_branch$blue)"
     else
       set -l git_branch (_git_branch_name)
       set git_info "$blue ($git_branch)$blue"
