@@ -1,4 +1,4 @@
-## robbyrussell
+## eclm
 Based on the robbyrussell theme.
 
 ![robbyrussell theme](https://bachue.github.io/oh-my-fish/images/robbyrussell-screenshot.png)
