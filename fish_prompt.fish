@@ -39,6 +39,10 @@ function fish_prompt
     end
   end
 
+  # Notify if a command took more than 5 minutes
+  if [ "$CMD_DURATION" -gt 300000 ]
+    echo The last command took (math "$CMD_DURATION/1000") seconds.
+  end
+
   echo -n -s $status_indicator $cwd $git_info $normal ' '
 end
-
