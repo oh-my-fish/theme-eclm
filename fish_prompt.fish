@@ -27,10 +27,10 @@ function fish_prompt
 
     if test (_git_branch_name) = 'master'
       set -l git_branch (_git_branch_name)
-      set git_info "$blue ($red$git_branch$blue)"
+      set git_info "$normal ($red$git_branch$normal)"
     else
       set -l git_branch (_git_branch_name)
-      set git_info "$blue ($git_branch)$blue"
+      set git_info "$normal ($blue$git_branch$normal)"
     end
 
     if [ (_is_git_dirty) ]
