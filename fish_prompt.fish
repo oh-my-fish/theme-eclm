@@ -44,5 +44,9 @@ function fish_prompt
     echo The last command took (math "$CMD_DURATION/1000") seconds.
   end
 
-  echo -n -s $status_indicator $cwd $git_info $normal ' '
+  if set -q VIRTUAL_ENV
+    set virtualfish_info $normal "(" (basename $VIRTUAL_ENV) ") "
+  end
+
+  echo -n -s $status_indicator $virtualfish_info $cwd $git_info $normal ' '
 end
