@@ -3,6 +3,14 @@ function _git_branch_name
   echo (command git symbolic-ref HEAD 2> /dev/null | sed -e 's|^refs/heads/||')
 end
 
+function _git_default_remote_branch_name
+  echo (command git symbolic-ref --short refs/remotes/origin/HEAD 2> /dev/null | sed -e 's|^origin/||')
+end
+
+function _git_init_branch_name
+  echo (command git config init.defaultBranch)
+end
+
 function _is_git_dirty
   echo (command git status -s --ignore-submodules=dirty 2> /dev/null)
 end
@@ -25,7 +33,8 @@ function fish_prompt
 
   if [ (_git_branch_name) ]
 
-    if test (_git_branch_name) = 'master'
+    if test (_git_branch_name) = (_git_default_remote_branch_name) \
+       -o (_git_branch_name) = (_git_init_branch_name)
       set -l git_branch (_git_branch_name)
       set git_info "$normal ($red$git_branch$normal)"
     else
